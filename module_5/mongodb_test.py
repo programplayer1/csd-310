@@ -4,5 +4,10 @@ client = MongoClient(url)
 
 db = client.pytech
 
+print("-- Pytech Collection List --")
+
 print(db.list_collection_names())
 
+print("End of program, press any key to exit...")
+
+input()
