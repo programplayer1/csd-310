@@ -1,7 +1,7 @@
 """
 Author:  Paul Lorenz III
 Date: July 12, 2023
-Description: Inserting and deleteing the data from collection  using pymongo 
+Description: Inserting and deleting the data from collection using pymongo 
 
 """
 
