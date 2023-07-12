@@ -5,7 +5,7 @@ client = MongoClient(url)
 
 ##Linked up the "pytech" database and the "students" collection that resides in the pytech database.
 db = client["pytech"]
-mydata= db["students"] 
+mydata= db["students"]
 
 ##Executed the output statement to inform the user of the type of action that will get performed by the program. 
 print("-- DISPLAYING STUDENTS DOCUMENTS FROM find() QUERY --")
@@ -24,15 +24,4 @@ for x in All_data:
 print("-- DISPLAYING STUDENT DOCUMENT FROM find_one() QUERY --")
 
 ##Executed the find_one method to find one student document that resides in the collection of the database.
-x_data = mydata.find_one({"student_id":1008})
-
-##Executed an if statement to retrieve the information that goes along with one student document that is in the collection of the database.
-student_id = x_data["student_id"]
-first_name = x_data["first_name"]
-last_name = x_data["last_name"]
-
-##Executed the output statements to display the information that goes along with the student document that was found in the collection of the database. 
-print("Student ID:", student_id)
-print("First Name:", first_name)
-print("Last Name:", last_name)
-input("End of program, press any key to continue...")
+x_data = mydata.find_one({"student_id":1007})
