@@ -1,3 +1,12 @@
+"""
+Author:  Paul Lorenz III
+Date: July 12, 2023
+Description: Updating the data from collection using pymongo. 
+
+"""
+
+
+
 ##Used the import statement to import MongoClient from MongoDB Atlas and linked the url to establish the MongoDB Client connection.
 from pymongo import MongoClient
 url = "mongodb+srv://admin:admin@cluster0.bcg6ygj.mongodb.net/?retryWrites=true&w=majority"
