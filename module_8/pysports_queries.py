@@ -1,8 +1,8 @@
 """
 Author:  Paul Lorenz III
 Date: July 23, 2023
-Assignment Number: Module 8.2
-Description: Testing the connection to the MySQL.
+Assignment Number: Module 8.3
+Description: Connecting to the MySQL and getting data from the player and team tables from pysports database.
 
 
 
