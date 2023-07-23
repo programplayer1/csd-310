@@ -1,39 +1,66 @@
-##Author: Paul Lorenz III
-##Date: 7-15-2023
-##Description: Creating tables into the pysports database.  
+"""
+Author:  Paul Lorenz III
+Date: July 23, 2023
+Assignment Number: Module 8.2
+Description: Testing the connection to the MySQL.
 
-SELECT team_id, team_name, mascot FROM team;
 
-drop database if exists pysports;
-create database pysports; 
-use pysports;
 
-CREATE TABLE `team` (
-  `team_id` int NOT NULL,
-  `team_name` varchar(45) DEFAULT NULL,
-  `mascot` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`team_id`)
-) ;
+"""
 
-CREATE TABLE `player` (
-  `player_id` int NOT NULL,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `teamID` int NOT NULL,
-  PRIMARY KEY (`player_id`),
-  CONSTRAINT `Fk_team_player` FOREIGN KEY (`teamID`) REFERENCES `team` (`team_id`)
-) ;
 
-print("-- DISPLAYING TEAM RECORDS --")
-cursor = db.cursor()
+import mysql.connector
+from mysql.connector import errorcode
 
-cursor.execute("SELECT team_id, team_name, mascot FROM team")
+config = { 
+    "user":"pysports_user",
+    "password":"MySQL8IsGreat!",
+    "host":"127.0.0.1",
+    "database":"pysports",
+    "raise_on_warnings":True
+}
 
-teams = cursor.fetchall()
+try: 
+    db=mysql.connector.connect(**config) 
 
-for team in teams:
-    print("Team Name: {}".format(team[1]))
 
-print("-- DISPLAYING PLAYER RECORDS --")
+    print("-- DISPLAYING TEAM RECORDS --")
+    cursor = db.cursor() 
+    cursor.execute("SELECT team_id, team_name, mascot FROM team") 
+    teams = cursor.fetchall()
+    for team in teams: 
+       print("Team ID: {}".format(team[0]))
+       print("Team Name: {}".format(team[1]))
+       print("Mascot: {}".format(team[2]))
+       print("\n")
+    print("--DISPLAYING PLAYER RECORDS---")
+    cursor1 = db.cursor() 
+    cursor1.execute("SELECT player_id, first_name, last_name, team_id from player") 
+    players = cursor1.fetchall() 
+    for player in players: 
+        print("Player ID: {}".format(player[0]))
+        print("First Name: {}".format(player[1]))
+        print("Last Name: {}".format(player[2]))
+        print("Team ID: {}".format(player[3]))
+        print("\n")
 
-input("press any key to continue...")
+    input("\n\n Press any key to continue.....")
+    
+
+except mysql.connector.Error as err: 
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+        print(" The supplied username or password are invalid") 
+
+    elif err.errno == errorcode.ER_BAD_DB_ERROR: 
+        print(" The specified database does not exist")
+
+    else: 
+        print(err)
+
+
+
+finally: 
+    db.close()
+
+
+
