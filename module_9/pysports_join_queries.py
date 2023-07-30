@@ -1,8 +1,8 @@
 """
 Author:  Paul Lorenz III
-Date: July 23, 2023
-Assignment Number: Module 8.3
-Description: Connecting to the MySQL and getting data from the player and team tables from pysports database.
+Date: July 30, 2023
+Assignment Number: Module 9.2
+Description: Connecting to the MySQL and getting data by Joining the player and team tables from pysports database.
 
 
 
